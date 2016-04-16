@@ -20,6 +20,9 @@ require("Game")
 require("Pause_Menu")
 require("Game_Over")
 
+-- Entities
+require("player")
+
 function love.load(arg)
 	-- Init Gamestate
     Gamestate.registerEvents()
