@@ -2,13 +2,13 @@
 
 function love.conf(t)
      t.window.title = "CircleShift"
-     t.window.width = 1920/2 -- TODO: make sure this shows well on other screens               
+     t.window.width = 1920/2 -- TODO: make sure this shows well on other screens     
      t.window.height = 1080/2  
     
      --t.window.icon = nil -- TODO: Set this laters
      t.version = "0.10.1"
 
-     --t.console = false -- Test if actually needed
+     t.console = true -- Test if actually needed
 end
 
 
