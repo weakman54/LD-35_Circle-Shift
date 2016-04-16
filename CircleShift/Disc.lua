@@ -23,7 +23,3 @@ function Disc:new(disc)
 
     return disc
 end
-
-
-
-

@@ -27,7 +27,7 @@ function player:update(dt)
             local targetV =   targetPos - startPos
             
             local t = 0
-            local duration = 1
+            local duration = 0.5
             
             Timer.during(duration, function(dt)
                 t = t + dt

@@ -1,6 +1,8 @@
 
 Game = {}
 
+print(math.tau)
+
 backgroundElements = {}
 
 function Game:enter(previous, ...)
@@ -22,13 +24,16 @@ function Game:enter(previous, ...)
     Game.mainDisc:addCircle{radius=100}
     Game.mainDisc:addCircle{radius=200}
 
-    Game.mainDisc.circles[1]:addDisc{}
-    Game.mainDisc.circles[1].discs[1]:addCircle{radius=25}
+    Game.mainDisc.circles[1]:addDisc{angle=math.tau*(0/3)} -- Don't div by 0 silly..
+    Game.mainDisc.circles[1].discs[1]:addCircle{radius=20}
     Game.mainDisc.circles[1].discs[1].circles[1]:addDisc()
     Game.mainDisc.circles[1].discs[1].circles[1].discs[1]:addCircle{radius=10}
 
-    Game.mainDisc.circles[1]:addDisc{angle=math.pi}
-    Game.mainDisc.circles[1].discs[2]:addCircle{radius=20}
+    Game.mainDisc.circles[1]:addDisc{angle=math.tau*(1/3)}
+    Game.mainDisc.circles[1].discs[2]:addCircle{radius=30}
+
+    Game.mainDisc.circles[1]:addDisc{angle=math.tau*(2/3)}
+    Game.mainDisc.circles[1].discs[3]:addCircle{radius=40}
 
 
     Game.mainDisc.circles[2]:addDisc{}

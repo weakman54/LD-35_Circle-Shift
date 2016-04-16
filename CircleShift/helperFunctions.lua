@@ -1,4 +1,6 @@
 
+math.tau = math.pi*2
+
 Width, Height = love.graphics.getWidth(), love.graphics.getHeight()
 
 function resetMenuUI(titleStr)
