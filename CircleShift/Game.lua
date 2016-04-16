@@ -20,15 +20,25 @@ end
 
 function Game:update(dt)
     cam:lookAt(player.pos.x, player.pos.y)
-
     mousePos = Vector(cam:worldCoords(love.mouse.getPosition()))
     
     -- A-B points to A
     jumpVec = (mousePos-player.pos):trimInplace(100)
+
+    if input:pressed("moveButton") then
+        print("Jump")
+        player.pos = player.pos + jumpVec
+        
+        -- Remember to update all the positions for drawing
+        cam:lookAt(player.pos.x, player.pos.y)
+        mousePos = Vector(cam:worldCoords(love.mouse.getPosition()))
+        jumpVec = (mousePos-player.pos):trimInplace(100)
+    end
 end
 
 function Game:draw(dt)
     cam:attach()
+
     for _, rect in ipairs(backgroundElements) do
         love.graphics.setColor(rect.r, rect.g, rect.b, rect.a)
         love.graphics.rectangle("fill", rect.x, rect.y, rect.width, rect.height)
@@ -38,8 +48,8 @@ function Game:draw(dt)
     love.graphics.rectangle("fill", mousePos.x, mousePos.y, 10, 10)
 
     love.graphics.line(player.pos.x, player.pos.y, player.pos.x + jumpVec.x, player.pos.y + jumpVec.y)
-    
 
     player:draw(dt)
+
     cam:detach()
 end
