@@ -23,7 +23,7 @@ require("Game_Over")
 function love.load(arg)
 	-- Init Gamestate
     Gamestate.registerEvents()
-    Gamestate.switch(Start_Menu)
+    Gamestate.switch(Game)
 
     -- Init input and set bindings
     input = Input()
