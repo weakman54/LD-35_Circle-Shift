@@ -2,9 +2,24 @@ player = {}
 
 player.pos = Vector(0, 0)
 player.radius = 10
+player.moving = false
 
 function player:update(dt)
-    -- Do stuff
+    if not self.moving then
+        if self.engagedTo then
+            player.pos = self.engagedTo.center
+        end
+    
+        if input:pressed("movement") then
+            print("Move")
+            --self.moving = true
+    
+            local nextDiscI = ((self.engagedTo.index) % #self.engagedTo.parent.discs) + 1 -- Uuh, this seems pretty wierd... oh well..
+            local nextDisc =  self.engagedTo.parent.discs[nextDiscI] -- yeah...
+    
+            self.engagedTo = nextDisc
+        end
+    end
 end
 
 function player:draw(dt)

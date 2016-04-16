@@ -10,6 +10,7 @@ function Disc:new(disc)
     
     function disc:addCircle(circle)
         circle.parent = self
+        circle.index = #self.circles + 1
         table.insert(self.circles, Circle:new(circle))
     end
 

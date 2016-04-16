@@ -36,10 +36,19 @@ function Game:enter(previous, ...)
 
     Game.mainDisc.circles[2]:addDisc{angle=math.pi}
     Game.mainDisc.circles[2].discs[2]:addCircle{radius=10}
+    
+    -- Maybe put these as player:update stuff actually?
+    
+    player.engagedTo = Game.mainDisc.circles[1].discs[1]
+    print(player.engagedTo)
+    player.moving = false
 end
 
 function Game:update(dt)
     player:update(dt)
+
+    
+
     cam:lookAt(player.pos.x, player.pos.y)
 end
 

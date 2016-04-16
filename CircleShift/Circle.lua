@@ -18,11 +18,12 @@ function Circle:new(circle)
         disc.center = self.parent.center + rotVec -- TODO: MATH, make sure it's not dependent on center being (0, 0)
         
         disc.parent = self
+        disc.index = #self.discs + 1
         table.insert(self.discs, Disc:new(disc))
     end
 
     function circle:draw()
-        -- Draw self:
+        -- Draw self
         love.graphics.circle("line", self.parent.center.x, self.parent.center.y, self.radius) -- OMFG... check you copy pastes...
         
         -- Draw all discs I know of:
@@ -30,6 +31,8 @@ function Circle:new(circle)
             disc:draw()
         end
     end
+
+    
 
     return circle
 end
