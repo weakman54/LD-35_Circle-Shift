@@ -6,10 +6,15 @@ made by weakman54
 -- Libraries
 -- Init gamestates before input, so that input registers for all gamestates,
 -- not just main.lua
+Camera = require("libs/hump.camera")
 Gamestate = require("libs/hump.gamestate")
---Timer = require("libs/hump.timer")
+
+Vector = require("libs/hump.vector")
 Input = require("libs/boipushy.Input")
 suit = require("libs/suit")
+
+
+--Timer = require("libs/hump.timer")
 
 -- helper functions and constants
 require("helperFunctions")
@@ -24,14 +29,22 @@ require("Game_Over")
 require("player")
 
 function love.load(arg)
-	-- Init Gamestate
+	-- Init Gamestate, do BEFORE Input!
     Gamestate.registerEvents()
-    Gamestate.switch(Game)
+   
 
     -- Init input and set bindings
     input = Input()
     
     input:bind("escape", "PauseQuit") -- Is there a better way to do this? bind as two different commands?
+    
+
+    -- Init Camera
+    cam = Camera(player.pos.x, player.pos.y)
+
+
+    -- Switch LAST, everything above needs to be initialized
+    Gamestate.switch(Game) 
 end
 
 
