@@ -176,4 +176,7 @@ Solidified ideas, round 1
 
             Implement the above mechanics of movement in the same order
 
-        Circle
+
+    Remember theme!
+        Have the world "shift" somehow, the puzzles have some dependency on this
+        Maybe as the inner layers of the HC ticks over, the outer ones change
