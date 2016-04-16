@@ -1,0 +1,179 @@
+Theme: Shapeshift
+    Idk how well I'll follow it, bt I have a good idea at least, so wth
+    we'll see =P
+
+Ideas:
+    shapeshifting hero
+    shapeshifting enemies
+    shapeshifting world
+
+    Different abilities to solve different puzzles
+    Different tactics to attack enemies that change
+    Change of mind when traversing the "Same-but-different" world
+
+Shape-shifting, puzzle-solving, top-down, story"driven" mystery.
+    Implement the "circle" puzzles I've been thinking about?
+    Have some mystery surrounding the world, implement some story as to why
+        shapeshifting
+
+    How will the world shift?
+        Have the world be different when the player comes back to a place?
+        Shift it in front of the players eyes?
+        Will only small things change? (Maybe only a little to begin with)
+
+    What will shift?
+        Is it a cyclic shift, or a shift towards something?
+        Majoras mask style, where there is only limited time before everything is changed?
+    
+    From what?
+
+    Into what?
+        
+
+
+
+
+Prototypes:
+    Have a tilebased movement, with Circles that can be "engaged"
+    Have a distance based movement, with ^
+    Have a "quantum-state" based movement, with some sort of mechanic for jumping "shells" (Turn based still, somehow?)
+
+    (Sponaneously, I feel the distance based movement will work best, and I don't think I have time for more prototyping...)
+
+
+
+
+Programming:
+    I need a PChar, with attached top-down camera
+    I need collisions with world elements
+    
+    Movement?
+        I'm thinkin have a set distance that you can go each "turn", and have the Player    
+        choose where to go in a  radius, shorter distances makes the PChar run slower
+
+        Have it loosely tile based (Doesn't feel right with the "circleness", I think)
+        
+        Have _all_ movement be based on hopping "quantum-states" in "shells"
+        (This makes the most "sense" in-universe, and would be a very intersting element to
+        the game if done right)
+            Would this work with the "engage" mechanic though?
+            would this maybe be "better" than the engage mechanic?
+
+
+    I need a world that can shift, probably out of view of PC, for simplicity's sake
+        Maybe do a anti-chamber style thing? (Not quite, it won't be non-euclidian (or will it?))
+        Probably Tilebased using Tile-ed, though I might actually not want that...
+
+    I want Puzzles
+        Environment based ones, because shapeshifting world
+        But maybe more "The witness" style of puzzles too?
+        The player "engages" the puzzles by moving onto circles and pressing a button
+        When engaged, the Player will be in "puzzle-solving" mode, though this might be
+        useful for other stuff too, like dodging dangers or similar
+
+    Enemies?
+
+
+
+Story
+    If I do the Circle puzzles, the entire "Dungeon" is built around a giant circle puzzle
+
+    To solve everything, You need to get info about how the world moves, and solve parts
+    of that in the smaller puzzles
+
+    Hyper-dimensional "clock"? The current revolution is at "Earth-o-clock" (Given that we are on earth in the game)
+        The Earth "clock" does it's revolutions, and then the Hyper dimensional one will move on, putting you on a timer
+            to get out before you get stuck in other dimensions, probably for as long as you live
+        What would the timescale be though?
+        This needs to be explained somewhat early, so that the player knows that it's time-critical.
+        At the same time, you don't want to stress the player...
+        A mechanism for "turning back time"?
+        Maybe the time given inside the "Dungeon" is ample for the job
+        Maybe failure is inevitable, and you have to try again?
+            Any good reason for having more knowledge the next playthrough?
+
+        Maybe the clock isn't that slow, and you have a chance of getting back if you miss the window?
+        Maybe that's the "mission"? An expedition into this wierd anomaly that has been found,
+            which activates once every "time-unit", and stays active for a while, then dissapears,
+            only to come back with very rigid regularity.
+        Once you have gone one step along the HyperClock, it's revealed that the team you now are communicating with
+            is in fact from another parallell dimension, and that you'll probably see more as you "go around"
+
+        Puzzles that the PC solves will "re-program" the behaviour of the clock, maybe defensive measures are
+            taken by the "Dungeon", traps, guards, other interesting things
+        An objective in that case might be to make sure you can get out before the HyperClock "turns over"
+            so that you don't get stuck
+
+        Research some simple clock mechanics, specifically, how the "set new time" works on a "cog"-level,
+            I might be able to use that as a way to "stop" the HyperClock's movement
+
+            
+        Maybe have it turnbased to de-stress the situation, and emphasise strategy and puzzle solving more.
+        (Will also be easier mechanically)
+        Every turn marks a revolution of the "atomic-clock", which will be in the center
+        I'm almost instictively picturing divisions into prime numbers for each "layer", but we'll see if that
+        works out with the timing
+
+
+    
+    Cop-out: You never actually get to know who made this place, or why, it's all open
+        Careful with that one though
+
+
+
+Solidified ideas, round 1
+    HyperClock that regularly goes to "Earth-o-clock", which has been discovered with "advanced Dimensional tech"
+        The "Team" that is investigating this "Anomaly" has very little info on what it is, and is sending
+        something in to look around, this is the PC, either a drone or an actual being.
+    The HC comes around pretty often, so getting stuck is no problem, but what will happen if you are inside is
+        unkown (Other dimensional team? Game Over?)
+    You start out just as the "Team" is sending you/a drone in to the "Door" of the anomaly, you learn the movement
+        while "disengage", you learn to "engage", you learn the movement while "engaged", and last but not least you
+        learn how to "Push into" another "Circle" (I need better terms for these xD)
+    When inside, you learn about failure if you try to move into the red beams (Even while disengaged? There are possibilities there)
+        you learn disengaging, moving things attached to rings, and get some exposition from te "Scientists"
+    The first task is to explore, learn about the different rulesets (which? xD), and become familiar with the "Dungeon"
+        while poppin around solving puzzles, you'll get more exposition in the form of "Runes on the walls" (maybe) and
+        theories and such from the scientists
+    You'll soon learn that you need to hurry up if you want out before the HC ticks over, but depending, you might have
+        to get to the middle to get back out. (This is not definite!)
+
+    Programming:
+        I need a PC that is controllable by "jumping" in a direction for a specific distance
+            a jump shorter than max-distance will behave how? (probably slowed down, whatevers easiest to implement xD)
+
+        I need to implement the "Circle rooms" and the puzzles in them.
+            there needs to be a way to see what has "power", see where you can engage, see where you can and can't move
+
+        There need to be a way to keep track of the "Master clock", and how it affects the rest of the world
+
+    Prototypes:
+        I need player movement.
+            Have random things in the background for reference
+            Look at mousePos relative to PC, show "jump-trajectory"
+            if clicked, jump
+
+        Circle movement
+            Start with player engaged
+            Have one other circle that you can jump to
+
+            Add "energy" that moves with the player
+
+            Add "anti-energy" that moves "opposite" the player
+
+            Have some more circles
+
+        Circle "Pushing":
+            Start with PC engaged on a "push-point", and only having
+            "Circle-pushing movement"
+
+            implement simple circle movement for moving to other
+            push- points along the other circles
+
+        Engage/disengage mechanic
+            Start with player sitting on an "engage-point", and only being able to
+            engage and disengage
+
+            Implement the above mechanics of movement in the same order
+
+        Circle
