@@ -9,7 +9,7 @@ made by weakman54
 Gamestate = require("libs/hump.gamestate")
 Camera = require("libs/hump.camera")
 Vector = require("libs/hump.vector")
---Timer = require("libs/hump.timer")
+Timer = require("libs/hump.timer")
 Input = require("libs/boipushy.Input")
 suit = require("libs/suit")
 
@@ -49,7 +49,7 @@ end
 
 
 function love.update(dt)
-    --Timer.update(dt)
+    Timer.update(dt)
 end
 
 

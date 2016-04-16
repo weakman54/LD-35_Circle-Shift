@@ -22,13 +22,18 @@ function Game:update(dt)
     cam:lookAt(player.pos.x, player.pos.y)
     mousePos = Vector(cam:worldCoords(love.mouse.getPosition()))
     
-    -- A-B points to A
-    jumpVec = (mousePos-player.pos):trimInplace(100)
+    if not player.moving then
+         -- A-B points to A
+        jumpVec = (mousePos-player.pos):trimInplace(100)
 
-    if input:pressed("moveButton") then
-        print("Jump")
-        player.pos = player.pos + jumpVec
-        
+        targetPos = player.pos + jumpVec
+    end
+   
+
+    if input:down("moveButton") and not player.moving then        
+        Timer.tween(0.5, player.pos, {x=targetPos.x, y=targetPos.y}, "out-quad", function() player.moving = false end)
+        player.moving = true
+
         -- Remember to update all the positions for drawing
         cam:lookAt(player.pos.x, player.pos.y)
         mousePos = Vector(cam:worldCoords(love.mouse.getPosition()))
@@ -47,7 +52,7 @@ function Game:draw(dt)
     love.graphics.setColor(255, 255, 0, 255)
     love.graphics.rectangle("fill", mousePos.x, mousePos.y, 10, 10)
 
-    love.graphics.line(player.pos.x, player.pos.y, player.pos.x + jumpVec.x, player.pos.y + jumpVec.y)
+    love.graphics.line(player.pos.x, player.pos.y, targetPos.x, targetPos.y)
 
     player:draw(dt)
 
