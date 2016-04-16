@@ -19,7 +19,6 @@ function Game:enter(previous, ...)
 end
 
 function Game:update(dt)
-    player:update(dt)
     cam:lookAt(player.pos.x, player.pos.y)
 
     mousePos = Vector(cam:worldCoords(love.mouse.getPosition()))

@@ -3,9 +3,6 @@ player = {}
 player.pos = Vector(0, 0)
 player.radius = 10
 
-function player:update(dt)
-    -- Do stuff
-end
 
 function player:draw(dt)
     love.graphics.setColor(255, 255, 255, 255)
