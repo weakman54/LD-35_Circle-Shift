@@ -18,22 +18,24 @@ function player:update(dt)
             local nextDiscI = ((self.engagedTo.index) % #self.engagedTo.parent.discs) + 1 -- Uuh, this seems pretty wierd... oh well..
             local nextDisc =  self.engagedTo.parent.discs[nextDiscI] -- yeah...
 
-            player.engagedTo = false
+            
 
             -- Using my own function since tween loves to move the disc together with
             -- the player...
-            local startPos  = player.pos:clone() -- I think I need a clone here?
-            local targetPos = nextDisc.center
-            local targetV =   targetPos - startPos
+            local startAng  = self.pos:angleTo() -- I think I need a clone here?
+            local targetAng = nextDisc.center:angleTo()
+            local pDiscCenter = self.engagedTo.parent.parent.center -- parent is the circle, whos parent is the middle disc
+            local rotVec = self.pos - pDiscCenter
             
             local t = 0
-            local duration = 0.5
+            local duration = 1
             
             Timer.during(duration, function(dt)
                 t = t + dt
                 local fraction = t/duration
 
-                player.pos = -targetV * fraction*(fraction-2) + startPos
+                local curAng = -targetAng * fraction*(fraction-2) + startAng -- TODO: Make sure movement goes in the correct direction...
+                player.pos = pDiscCenter + rotVec:rotated(curAng)
             end, function()
                 player.moving = false
                 player.engagedTo = nextDisc
