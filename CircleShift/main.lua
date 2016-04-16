@@ -28,6 +28,9 @@ require("Game_Over")
 -- Entities
 require("player")
 
+require("Disc")
+require("Circle")
+
 function love.load(arg)
 	-- Init Gamestate, do BEFORE Input!
     Gamestate.registerEvents()
