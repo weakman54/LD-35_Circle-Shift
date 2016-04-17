@@ -1,8 +1,6 @@
 
 Game = {}
 
-print(math.tau)
-
 backgroundElements = {}
 
 function Game:enter(previous, ...)
@@ -51,14 +49,17 @@ function Game:enter(previous, ...)
 end
 
 function Game:update(dt)
+    --print("Game Update    Pos: (" .. round(player.pos.x, 2) .. ", " .. round(player.pos.y, 2) .. ")")
     player:update(dt)
-
+    
+    
     
 
     cam:lookAt(player.pos.x, player.pos.y)
 end
 
 function Game:draw(dt)
+    --print("Game Draw      Pos: (" .. round(player.pos.x, 2) .. ", " .. round(player.pos.y, 2) .. ")")
     cam:attach()
     for _, rect in ipairs(backgroundElements) do
         love.graphics.setColor(rect.r, rect.g, rect.b, rect.a)
