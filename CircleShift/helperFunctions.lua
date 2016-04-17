@@ -17,3 +17,23 @@ function resetMenuUI(titleStr)
         suit.Label(titleStr, suit.layout:row())
     end
 end
+
+
+-- Draws the vector as a line with start pos start
+function drawVec(start, vector)
+    local targetVec = start + vector
+    love.graphics.line(start.x, start.y, targetVec.x, targetVec.y)
+end
+
+function normalizeAngle(angle)
+    while angle <= 0 do
+        angle = angle + math.tau
+    end
+    return angle
+end
+
+function round(num, idp)
+    local mult = 10^(idp or 0)
+    if num >= 0 then return math.floor(num * mult + 0.5) / mult
+    else return math.ceil(num * mult - 0.5) / mult end
+end
