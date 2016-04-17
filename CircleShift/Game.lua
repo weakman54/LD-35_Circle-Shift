@@ -23,7 +23,8 @@ function Game:enter(previous, ...)
     Game.mainDisc = Disc:new{}
     Game.mainDisc:addCircle{radius=100}
     Game.mainDisc:addCircle{radius=200}
-
+    
+    -- Gotta remember that order matters, might just be a feature, we'll see
     Game.mainDisc.circles[1]:addDisc{angle=math.tau*(0/3)} -- Don't div by 0 silly..
     Game.mainDisc.circles[1].discs[1]:addCircle{radius=20}
     Game.mainDisc.circles[1].discs[1].circles[1]:addDisc()

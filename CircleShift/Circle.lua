@@ -10,10 +10,10 @@ function Circle:new(circle)
     function circle:addDisc(disc)
         disc = disc or {}
     
-        disc.angle = disc.angle or 0
-
-        local rotVec = Vector(self.radius, 0)
+        disc.angle = disc.angle or 0 -- disc angle on parent circle
+        local rotVec = Vector(self.radius, 0) -- Get 0 rotated vector
         rotVec:rotateInplace(disc.angle)
+        disc.angle = rotVec:angleTo() -- exploit vector to normalize angle
 
         disc.center = self.parent.center + rotVec -- TODO: MATH, make sure it's not dependent on center being (0, 0)
         
